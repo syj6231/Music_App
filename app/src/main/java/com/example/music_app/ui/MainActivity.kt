@@ -1,5 +1,6 @@
 package com.example.music_app.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,18 +11,29 @@ import com.example.music_app.databinding.ActivityMainBinding
 import com.example.music_app.network.SpotifyAuthClient
 import com.example.music_app.network.SpotifyApiClient
 import com.example.music_app.viewmodel.MusicViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
     private val musicViewModel: MusicViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding  // View Binding 객체 선언
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        auth = FirebaseAuth.getInstance() // FirebaseAuth 초기화
+
         // RecyclerView 설정
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
+
+        // 로그아웃 버튼 이벤트
+        binding.logoutButton.setOnClickListener {
+            auth.signOut() // Firebase 로그아웃
+            startActivity(Intent(this, LoginActivity::class.java)) // 로그인 화면으로 이동
+            finish() // 현재 액티비티 종료
+        }
 
         // Access Token 요청 및 설정
         SpotifyAuthClient.requestAccessToken { token ->

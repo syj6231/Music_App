@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.music_app">
+
+    <!-- 인터넷 권한 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -10,17 +15,34 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Music_App"
-        tools:targetApi="31">
+        android:theme="@style/Theme.Music_App">
+
+        <!-- SplashActivity: 앱 시작 시 -->
         <activity
-            android:name=".ui.MainActivity"
-            android:exported="true">
+            android:name=".ui.SplashActivity"
+            android:exported="true"> <!-- Launcher Activity이므로 exported=true -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        <!-- LoginActivity: 사용자 인증 화면 -->
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="false" /> <!-- 다른 앱에서 접근 불가 -->
+
+        <!-- MainActivity: 메인 화면 -->
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="false" /> <!-- 다른 앱에서 접근 불가 -->
+
+        <!-- Firebase 초기화 Provider -->
+        <activity android:name=".ui.RegisterActivity" />
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="${applicationId}.firebaseinitprovider"
+            android:exported="false"
+            tools:node="merge" />
+    </application>
 </manifest>
