@@ -8,20 +8,20 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object SpotifyApiClient {
     private const val BASE_URL = "https://api.spotify.com/v1/"
-    private var accessToken: String? = null  // Access Token 저장 변수
+    private var accessToken: String? = null
 
-    // Access Token 설정 함수
+
     fun setAccessToken(token: String) {
         accessToken = token
     }
 
-    // Access Token 반환 함수
+
     fun getAccessToken(): String {
         Log.d("SpotifyApiClient", "Current Access Token: $accessToken")
         return accessToken ?: throw IllegalStateException("Access Token is not set")
     }
 
-    // Retrofit 인스턴스
+
     val instance: Retrofit by lazy {
         val client = OkHttpClient.Builder()
             .addInterceptor { chain ->

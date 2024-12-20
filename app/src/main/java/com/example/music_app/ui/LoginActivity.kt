@@ -30,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        // 회원가입 버튼 클릭 이벤트
+
         binding.registerButton.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
@@ -41,12 +41,10 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // 로그인 성공
                     Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, MainActivity::class.java)) // 메인 화면으로 이동
+                    startActivity(Intent(this, MainActivity::class.java))
                     finish() // 로그인 화면 종료
                 } else {
-                    // 로그인 실패
                     val errorMessage = task.exception?.message ?: "로그인에 실패했습니다."
                     Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
                 }

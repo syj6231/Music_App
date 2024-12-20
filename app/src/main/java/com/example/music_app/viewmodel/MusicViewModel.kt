@@ -14,9 +14,9 @@ class MusicViewModel : ViewModel() {
     fun fetchTracks(query: String) = liveData(Dispatchers.IO) {
         try {
             val tracks = repository.searchTracks(query)
-            emit(tracks)  // 결과를 LiveData에 전달
+            emit(tracks)
         } catch (e: Exception) {
-            emit(emptyList<Track>())  // 에러 발생 시 빈 목록 반환
+            emit(emptyList<Track>())
             Log.e("MusicViewModel", "Error fetching tracks: ${e.message}")
         }
     }

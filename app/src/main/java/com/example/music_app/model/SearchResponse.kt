@@ -11,20 +11,20 @@ data class Tracks(
 data class Track(
     val name: String,
     val artists: List<Artist>,
-    val album: Album? = null
+    val album: Album? = null,
+    var rating: Float = 0f
 ) {
-    // album 객체에서 첫 번째 이미지 URL을 가져오는 프로퍼티
     val albumCoverUrl: String?
         get() = album?.images?.firstOrNull()?.url
 }
 
 
 data class Image(
-    val url: String  // 앨범 커버 이미지 URL
+    val url: String
 )
 
 data class Album(
-    val images: List<Image>  // 이미지 목록
+    val images: List<Image>
 )
 
 data class Artist(

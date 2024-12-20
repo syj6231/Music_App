@@ -11,8 +11,8 @@ class MusicRepository {
     private val apiService = SpotifyApiClient.instance.create(SpotifyApiService::class.java)
 
     suspend fun searchTracks(query: String): List<Track> {
-        val accessToken = SpotifyApiClient.getAccessToken() // Access Token 가져오기
-        return withContext(Dispatchers.IO) {  // 네트워크 작업은 IO 스레드에서 실행
+        val accessToken = SpotifyApiClient.getAccessToken()
+        return withContext(Dispatchers.IO) {
             try {
                 val response = apiService.searchTracks(
                     query = query,

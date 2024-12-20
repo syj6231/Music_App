@@ -3,20 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:gravity="center_vertical">
 
-    <!-- 앨범 커버 이미지 -->
     <ImageView
         android:id="@+id/albumCover"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_placeholder" />
+        android:src="@drawable/ic_placeholder"
+        android:contentDescription="@string/album_cover" />
 
-    <!-- 곡 제목 및 아티스트 -->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:paddingStart="8dp">
 
@@ -36,4 +38,12 @@
             android:textSize="14sp"
             android:textColor="#666666" />
     </LinearLayout>
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1.0"
+        android:layout_marginStart="8dp" />
 </LinearLayout>

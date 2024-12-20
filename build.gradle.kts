@@ -5,11 +5,11 @@ plugins {
 }
 buildscript {
     repositories {
-        google()        // Google Maven 저장소
-        mavenCentral()  // Maven Central 저장소
+        google()
+        mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:8.1.1") // Android Gradle 플러그인
-        classpath("com.google.gms:google-services:4.4.0") // Google Play 서비스
+        classpath("com.android.tools.build:gradle:8.1.1")
+        classpath("com.google.gms:google-services:4.4.0") 
     }
 }

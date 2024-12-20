@@ -11,7 +11,7 @@ interface SpotifyAuthService {
     @POST("token")
     @FormUrlEncoded
     fun getAccessToken(
-        @Header("Authorization") authHeader: String, // Base64 인코딩된 Client ID:Client Secret
+        @Header("Authorization") authHeader: String,
         @Field("grant_type") grantType: String = "client_credentials"
     ): Call<AccessTokenResponse>
 }

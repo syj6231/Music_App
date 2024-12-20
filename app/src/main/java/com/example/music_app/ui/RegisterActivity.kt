@@ -17,7 +17,7 @@ class RegisterActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        // 회원가입 버튼 클릭 이벤트
+
         binding.registerButton.setOnClickListener {
             val email = binding.registerEmailEditText.text.toString().trim()
             val password = binding.registerPasswordEditText.text.toString().trim()
@@ -52,7 +52,7 @@ class RegisterActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
-                    finish() // 회원가입 완료 후 로그인 화면으로 돌아감
+                    finish()
                 } else {
                     Toast.makeText(this, "Registration Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
