@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.music_app">
 
-    <!-- 인터넷 권한 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -17,7 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Music_App">
 
-        <!-- SplashActivity: 앱 시작 시 -->
         <activity
             android:name=".ui.SplashActivity"
             android:exported="true"> <!-- Launcher Activity이므로 exported=true -->
@@ -27,17 +25,16 @@
             </intent-filter>
         </activity>
 
-        <!-- LoginActivity: 사용자 인증 화면 -->
         <activity
             android:name=".ui.LoginActivity"
-            android:exported="false" /> <!-- 다른 앱에서 접근 불가 -->
+            android:exported="false" /> 
 
-        <!-- MainActivity: 메인 화면 -->
+
         <activity
             android:name=".ui.MainActivity"
-            android:exported="false" /> <!-- 다른 앱에서 접근 불가 -->
+            android:exported="false" /> 
 
-        <!-- Firebase 초기화 Provider -->
+ 
         <activity android:name=".ui.RegisterActivity" />
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
